@@ -36,3 +36,11 @@ export const getProductById = async (id) => {
     return error;
   }
 };
+export const makeOrder = async (order) => {
+  try {
+    const orders = await axios.post(`${BASE_URL}/orders/`, order);
+    return orders.data;
+  } catch (error) {
+    return error;
+  }
+};

@@ -30,19 +30,26 @@ export default {
     },
     async getAllProducts() {
       const products = await API.getProducts();
-      console.log(products, "products");
+      console.log(products);
     },
+
     async getSingleProduct() {
-      const product = await API.getProductById("SxStsi9dmrmRzWtz");
-      console.log(product, "singel product");
+      // const product = await API.getProductById("SxStsi9dmrmRzWtz");
+    },
+    async postOrder() {
+      const order = await API.makeOrder({
+        items: ["SxStsi9dmrmRzWtz", "SxStsi9dmrmRzWtz", "SxStsi9dmrmRzWtz"],
+      });
+      console.log(order);
     },
   },
 
   created() {
     // this.auth();
     // this.register();
-    // this.getProductsTest();
-    this.getSingleProduct();
+    this.getAllProducts();
+    // this.getSingleProduct();
+    this.postOrder();
   },
 };
 </script>
