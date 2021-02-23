@@ -5,6 +5,38 @@ Samla era erfarenheter från Kanban, Scrum och diskussionerna av Modern Agile oc
 gruppen om vilka delar och hur ni ska inkorporera detta i ert arbete. 
 Dokumentera vad ni kommer överens om i README.md i ert repository.
 
+Arbetssättet som tänkts användas är inspirerat av agila metoder. Features är definierade efter vad användarna behöver. På github skapas en develop branch och utifrån den skapas en egen branch för specifika features.
+
+För att dokumentera och strukturera arbetet används webbappen Trello. I Trello har arbetet strukturerats på följande vis i kolumner. 
+		
+Features
+*	Korten i denna kolumn beskriver övergripande vad produkten innehåller
+*	Dessa refereras till i resten av projektet
+
+Backlog
+*	Här bryts Features ned till vyer och komponenter som kan arbetas på självständigt
+*	Korten i backlog innehåller en lista med dependencies (vilka andra komponenter som påverkas av eller påverkar vald komponent)
+*	Korten i backlog innehåller en lista med Dod (definitions of done)
+*	Dependencies som måste vara klara innan en komponent börjar utvecklas är markerade med en varningsskylt (emoji)
+
+Todo
+*	Här ligger kort som bryts ut från dependencies eller komponenter i Backlog-korten
+*	I korten ligger en lista med Dod som kopieras från Backlog-kortet
+*	Korten i denna kolumn färgkodas för att kopplas till motsvarande Backlog-kort
+
+Doing
+*	Hit flyttas korten från Todo-kolumnen som arbetas med för tillfället
+
+Testing
+*	När ett kort är färdigt flyttas det hit för att testas
+
+Review
+*	Hit flyttas ett färdigtestat kort för att utvärderas av samtliga inom teamet
+
+Done
+*	Hit flyttas helt färdiga kort
+
+
 ## Instruktioner
 Ni ska bygga en FrontEnd till en färdig BackEnd. Se `SINUS Webshop - REST API` nedan för mer information.
 
