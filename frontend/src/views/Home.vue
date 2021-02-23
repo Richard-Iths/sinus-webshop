@@ -16,7 +16,7 @@ export default {
       });
       console.log(user);
     },
-    register() {
+    async register() {
       API.registerUser({
         name: "Richard",
         email: "richard@iths.se",
@@ -28,10 +28,21 @@ export default {
         },
       });
     },
+    async getAllProducts() {
+      const products = await API.getProducts();
+      console.log(products, "products");
+    },
+    async getSingleProduct() {
+      const product = await API.getProductById("SxStsi9dmrmRzWtz");
+      console.log(product, "singel product");
+    },
   },
+
   created() {
     // this.auth();
-    this.register();
+    // this.register();
+    // this.getProductsTest();
+    this.getSingleProduct();
   },
 };
 </script>

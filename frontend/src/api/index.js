@@ -19,3 +19,20 @@ export const registerUser = async (userObj) => {
     return error;
   }
 };
+
+export const getProducts = async () => {
+  try {
+    const products = await axios.get(`${BASE_URL}/products/`);
+    return products.data;
+  } catch (error) {
+    return error;
+  }
+};
+export const getProductById = async (id) => {
+  try {
+    const products = await axios.get(`${BASE_URL}/products/${id}`);
+    return products.data;
+  } catch (error) {
+    return error;
+  }
+};
