@@ -36,11 +36,28 @@ export const getProductById = async (id) => {
     return error;
   }
 };
-export const makeOrder = async (order) => {
+export const makeOrder = async (order,token) => {
   try {
-    const orders = await axios.post(`${BASE_URL}/orders/`, order);
+    const orders = await axios.post(`${BASE_URL}/orders/`, order,{
+      headers: {
+        "authorization": `bearer ${token}`
+      }
+    }), 
     return orders.data;
   } catch (error) {
     return error;
   }
 };
+export const getUserOrders = async (token) => {
+  try {
+    const userOrders = await axios.post(`${BASE_URL}/orders/`,{
+      headers:
+      {
+      "authorization": `bearer ${token}`
+    }
+  })
+  return userOrders;
+  } catch (error) {
+    return error;
+  }
+} 
