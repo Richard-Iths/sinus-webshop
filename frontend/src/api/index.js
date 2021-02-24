@@ -4,8 +4,8 @@ const BASE_URL = process.env.VUE_APP_API_URL;
 
 export const authUser = async (userObj) => {
   try {
-    const user = await axios.post(`${BASE_URL}/auth/`, userObj);
-    return user.data;
+    const { data } = await axios.post(`${BASE_URL}/auth/`, userObj);
+    return data;
   } catch (error) {
     return error;
   }
@@ -13,8 +13,8 @@ export const authUser = async (userObj) => {
 
 export const registerUser = async (userObj) => {
   try {
-    const user = await axios.post(`${BASE_URL}/register/`, userObj);
-    return user.data;
+    const { data } = await axios.post(`${BASE_URL}/register/`, userObj);
+    return data;
   } catch (error) {
     return error;
   }
@@ -22,42 +22,65 @@ export const registerUser = async (userObj) => {
 
 export const getProducts = async () => {
   try {
-    const products = await axios.get(`${BASE_URL}/products/`);
-    return products.data;
+    const { data } = await axios.get(`${BASE_URL}/products/`);
+    return data;
   } catch (error) {
     return error;
   }
 };
 export const getProductById = async (id) => {
   try {
-    const products = await axios.get(`${BASE_URL}/products/${id}`);
-    return products.data;
+    const { data } = await axios.get(`${BASE_URL}/products/${id}`);
+    return data;
   } catch (error) {
     return error;
   }
 };
-export const makeOrder = async (order,token) => {
+export const makeOrder = async (order, token) => {
   try {
-    const orders = await axios.post(`${BASE_URL}/orders/`, order,{
+    const { data } = await axios.post(`${BASE_URL}/orders`, order, {
       headers: {
-        "authorization": `bearer ${token}`
-      }
-    }), 
-    return orders.data;
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
   } catch (error) {
     return error;
   }
 };
 export const getUserOrders = async (token) => {
   try {
-    const userOrders = await axios.post(`${BASE_URL}/orders/`,{
-      headers:
-      {
-      "authorization": `bearer ${token}`
-    }
-  })
-  return userOrders;
+    const { data } = await axios.get(`${BASE_URL}/orders`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
   } catch (error) {
-    return error;
+    return error.message;
   }
-} 
+};
+export const getUserProfile = async (token) => {
+  try {
+    const { data } = await axios.get(`${BASE_URL}/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
+export const patchUserProfile = async (userObj, token) => {
+  try {
+    const { data } = await axios.patch(`${BASE_URL}/me`, userObj, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
