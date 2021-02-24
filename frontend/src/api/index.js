@@ -57,7 +57,7 @@ export const getUserOrders = async (token) => {
     });
     return data;
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 export const getUserProfile = async (token) => {
