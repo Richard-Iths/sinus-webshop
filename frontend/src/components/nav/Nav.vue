@@ -1,20 +1,25 @@
 <template>
   <nav class="navigation">
     <nav-icon
-      :class="rotate"
+      :class="`${rotate} hide-desktop`"
       :iconSize="icon.size"
       icon="segment"
-      @click.native="roateMenuIcon"
+      @click.native="toggleModal"
     />
+    <Mobile v-if="isModal" />
   </nav>
 </template>
 <script>
+import Mobile from "./Mobile.vue";
 import NavIcon from "./NavIcon.vue";
 export default {
-  components: { NavIcon },
+  components: { NavIcon, Mobile },
   computed: {
     rotate() {
       return this.rotateIcon ? "rotate-icon" : "rotate-default";
+    },
+    isLoggedIn() {
+      return this.$store.getters["user/getToken"];
     },
   },
   data() {
@@ -23,10 +28,12 @@ export default {
         size: "icon--big",
       },
       rotateIcon: false,
+      isModal: false,
     };
   },
   methods: {
-    roateMenuIcon() {
+    toggleModal() {
+      this.isModal = !this.isModal;
       this.rotateIcon = !this.rotateIcon;
     },
   },
@@ -36,6 +43,7 @@ export default {
 .navigation {
   i {
     margin-top: 1rem;
+    color: orangered;
   }
   .rotate-icon {
     transform: rotate(-90deg);
@@ -43,6 +51,9 @@ export default {
   }
   .rotate-default {
     transition: all 0.5s ease;
+  }
+  &__list {
+    list-style-type: none;
   }
 }
 </style>

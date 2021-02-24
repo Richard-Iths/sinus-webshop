@@ -24,5 +24,8 @@ export default {
   &--small {
     font-size: 1.5rem;
   }
+  &--extra-big {
+    font-size: 6rem;
+  }
 }
 </style>
