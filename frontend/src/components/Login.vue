@@ -2,39 +2,51 @@
   <Form class="login">
     <div class="col-2">
       <label for="email">e-mail</label>
-      <input type="text" name="email" v-model="email">
+      <input type="text" name="email" v-model="email" />
     </div>
     <div class="col-2">
       <label for="password">password</label>
-      <input type="password" name="password" v-model="password">
+      <input type="password" name="password" v-model="password" />
     </div>
-    <Button class="col-2" value="log in" @click="login"/>
+    <p class="col-2" v-if="error">{{ error }}</p>
+    <Button class="col-2" value="log in" @click="login" />
   </Form>
 </template>
 
 <script>
-import Button from "@/components/Button.vue"
-import Form from "@/components/Form.vue"
+import Button from "@/components/Button.vue";
+import Form from "@/components/Form.vue";
 export default {
   name: "Login",
   components: {
     Button,
-    Form
+    Form,
   },
   data() {
     return {
-      email: "",
-      password: ""
-    }
+      email: "customer@example.com",
+      password: "password",
+      error: null
+    };
   },
   methods: {
-    login() {
-      
-    }
+    async login() {
+      const error = await this.$store.dispatch('user/login', {email: this.email, password: this.password})
+      if (error) {this.error = error}      
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.login {
+  background: white;
+  width: 85%;
+}
 
+@media screen and (min-width: 800px) {
+  .login {
+    max-width: 25rem;
+  }
+}
 </style>
