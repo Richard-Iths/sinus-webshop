@@ -24,5 +24,6 @@ button {
   color: black;
   padding: 0.5em;
   font-size: 1rem;
+  text-transform: uppercase;
 }
 </style>
