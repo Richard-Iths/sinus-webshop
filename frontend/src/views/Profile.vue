@@ -58,19 +58,16 @@
 
       <Button class="col-2" value="save" @click="save" v-if="editing" />
     </Form>
-    <Login />
   </div>
 </template>
 
 <script>
 import Button from "@/components/Button.vue";
 import Form from "@/components/Form.vue";
-import Login from "@/components/Login.vue";
 export default {
   name: "Profile",
   components: {
     Button,
-    Login,
     Form,
   },
   data() {
