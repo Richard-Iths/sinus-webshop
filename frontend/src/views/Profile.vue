@@ -1,14 +1,9 @@
 <template>
   <div>
-    <div class="details">
+    <Form class="details">
       <h1 class="col-2">your details</h1>
       <div class="col-2">
-        <img
-        src="../assets/edit.svg"
-        alt="edit"
-        class="edit"
-        @click="edit"
-      />
+        <img src="../assets/edit.svg" alt="edit" class="edit" @click="edit" />
       </div>
       <div class="col-1">
         <label for="email">e-mail</label>
@@ -19,7 +14,6 @@
           name="email"
         />
       </div>
-      
 
       <div class="col-1">
         <label for="name">name</label>
@@ -62,18 +56,22 @@
         />
       </div>
 
-      
-      <Button class="col-2" value="save" @click="save" v-if="editing"/>
-    </div>
+      <Button class="col-2" value="save" @click="save" v-if="editing" />
+    </Form>
+    <Login />
   </div>
 </template>
 
 <script>
-import Button from '@/components/Button.vue'
+import Button from "@/components/Button.vue";
+import Form from "@/components/Form.vue";
+import Login from "@/components/Login.vue";
 export default {
   name: "Profile",
   components: {
     Button,
+    Login,
+    Form,
   },
   data() {
     return {
@@ -97,62 +95,14 @@ export default {
     },
     save() {
       this.editing = false;
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-label,
 h1 {
   text-transform: uppercase;
-}
-
-label {
-  color: #666666;
-  padding-left: 0.2rem;
-  margin-left: 2px;
-}
-
-input {
-  padding: 0.2rem;
-  border: 2px #ddd solid;
-  margin-left: calc(0.2rem + 2px);
-}
-
-input[disabled] {
-  background: transparent;
-  border: none;
-  margin: 2px;
-}
-
-input:focus {
-  outline: none;
-}
-
-.col-2,
-.col-1 {
-  grid-column: auto/span 2;
-  display: flex;
-  flex-direction: column;
-}
-
-@media screen and (min-width: 800px) {
-  .col-1 {
-    grid-column: auto/span 1;
-  }
-
-  .col-2 {
-    grid-column: auto/span 2;
-  }
-}
-
-.details {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  padding: 1rem;
-  gap: 1rem;
-  max-width: 40rem;
 }
 
 .edit {
