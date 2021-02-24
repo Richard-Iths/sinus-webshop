@@ -4,3 +4,7 @@ export const userConstants = {
   UPDATE_USER: "updateUser",
   UPDATE_ORDER_HISTORY: "updateOrderHistory",
 };
+
+export const productsConstants = {
+  SET_PRODUCTS: "setProducts"
+}
