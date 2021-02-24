@@ -32,7 +32,7 @@ export default {
   methods: {
     async login() {
       const error = await this.$store.dispatch('user/login', {email: this.email, password: this.password})
-      if (error) {this.error = error}      
+      if (error) {this.error = error} else {this.$emit('close')}    
     },
   },
 };
