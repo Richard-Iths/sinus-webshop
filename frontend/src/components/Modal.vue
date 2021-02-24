@@ -9,7 +9,7 @@ export default {
     methods: {
         close(e) {
             if(e.target.classList.contains('modal')){
-                this.$emit('closeModal')
+                this.$emit('close')
             }
         }
     }
