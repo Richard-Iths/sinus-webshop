@@ -17,7 +17,8 @@ h2,
 h3,
 h4,
 a,
-button {
+button,
+label {
   font-family: "Fjalla One", sans-serif;
   text-decoration: none;
   color: #000;
