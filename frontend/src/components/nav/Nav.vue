@@ -72,6 +72,8 @@ export default {
   justify-content: space-between;
   width: 100%;
   padding: 2rem;
+  bottom: 0;
+  left: 0;
   background-color: peachpuff;
   margin-top: auto;
   i {
