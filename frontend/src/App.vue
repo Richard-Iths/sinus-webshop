@@ -27,6 +27,14 @@ body {
   line-height: 1.6em;
 }
 
+body {
+  margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h3,
