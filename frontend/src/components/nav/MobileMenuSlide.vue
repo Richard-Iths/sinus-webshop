@@ -1,15 +1,17 @@
 <template>
   <Transition :transitionObj="{ name: 'slide-left', appear: true }">
     <div class="wrapper">
+      <Modal v-if="showLoginModal" @close="showLoginModal = false">
+        <Login @close="showLoginModal = false"/>
+      </Modal>
       <div class="apu">
-        <router-link to="/profile" v-if="isLoggedIn">
+        <router-link @click.native="$emit('close')" to="/profile" v-if="isLoggedIn">
           <nav-icon
             :iconSize="icon.size"
             icon="manage_accounts"
-            @click.native="toggleModal"
           />
         </router-link>
-        <div class="apu__login-register" v-else>
+        <div class="apu__login-register" v-if="!isLoggedIn">
           <Button value="Register" @click="showRegister" />
           <Button value="Login" @click="showLogin" />
         </div>
@@ -31,7 +33,6 @@
           ><nav-icon
             :iconSize="icon.search"
             icon="search"
-            @click.native="toggleModal"
         /></label>
         <input type="search" name="search" />
       </div>
@@ -42,12 +43,14 @@
 import Transition from "@/components/transition/Transition.vue";
 import NavIcon from "./NavIcon";
 import Button from "@/components/Button.vue";
+import Modal from "@/components/Modal.vue";
+import Login from "@/components/Login.vue";
 
 export default {
-  components: { Transition, NavIcon, Button },
+  components: { Transition, NavIcon, Button, Modal, Login },
   computed: {
     isLoggedIn() {
-      return this.$store.getters["user/getToken"];
+      return this.$store.getters["user/getUserToken"];
     },
   },
   data() {
@@ -62,7 +65,9 @@ export default {
   },
   methods: {
     showRegister() {},
-    showLogin() {},
+    showLogin() {
+      this.showLoginModal = true
+    },
   },
 };
 </script>

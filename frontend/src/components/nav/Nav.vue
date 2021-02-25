@@ -12,7 +12,7 @@
       icon="shopping_cart"
       @click.native="toggleCart"
     />
-    <MobileMenuSlide v-if="showMenu" />
+    <MobileMenuSlide v-if="showMenu" @close="showMenu = false"/>
     <CartSlide v-if="showCart" />
   </nav>
 </template>
