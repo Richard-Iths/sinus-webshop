@@ -49,4 +49,8 @@ export default {
     max-width: 25rem;
   }
 }
+
+button {
+  margin-left: calc(0.2rem + 2px);
+}
 </style>

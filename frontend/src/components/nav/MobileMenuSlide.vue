@@ -12,7 +12,7 @@
           />
         </router-link>
         <div class="apu__login-register" v-if="!isLoggedIn">
-          <Button value="Register" @click="showRegister" />
+          <Button value="Register" @click="showRegister"/>
           <Button value="Login" @click="showLogin" />
         </div>
       </div>
@@ -64,7 +64,10 @@ export default {
     };
   },
   methods: {
-    showRegister() {},
+    showRegister() {
+      this.$router.push({name: "Register"})
+      this.$emit("close")
+    },
     showLogin() {
       this.showLoginModal = true
     },

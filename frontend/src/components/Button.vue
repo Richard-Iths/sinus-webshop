@@ -23,7 +23,7 @@ button {
   background: transparent;
   color: black;
   padding: 0.5em;
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   cursor: pointer;
 }
