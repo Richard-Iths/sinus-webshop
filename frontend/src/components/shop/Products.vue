@@ -1,21 +1,15 @@
 <template>
-  <section class="wrapper">
     <div class="products">
       <div class="buttons" v-for="product in products" :key="product._id">
         <p>{{ product.title }}</p>
         <button @click="addToCart(product)">add to cart</button>
       </div>
     </div>
-    <Cart />
-  </section>
 </template>
 
 <script>
-import Cart from "@/components/Cart.vue";
 
 export default {
-  components: { Cart },
-
   computed: {
     products() {
       return this.$store.getters["products/getProducts"];
