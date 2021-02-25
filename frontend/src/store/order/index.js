@@ -1,5 +1,5 @@
 import {orderConstants as Mutations} from '@/store/constants'
-/* import * as API from '@/api' */
+import * as API from '@/api'
 
 const order = ({
     namespaced: true,
@@ -35,6 +35,10 @@ const order = ({
 
             const orderIndex = state.currentOrder.indexOf(id)
             state.currentOrder.splice(orderIndex, 1)
+        },
+        [Mutations.REMOVE_ORDER](state){
+            state.cart = []
+            state.currentOrder = []
         }
     },
     actions: {
@@ -56,6 +60,16 @@ const order = ({
                     commit(Mutations.REMOVE_FROM_ORDER, product._id)
                 }
             }
+        },
+        async makeOrder({state, commit, rootGetters, dispatch}){
+            const token = rootGetters['user/getUserToken']
+            const orderObj = {"items": state.currentOrder}
+
+            await API.makeOrder(orderObj, token)
+            if(token){
+                dispatch('user/updateOrderHistory', state.cart, {root: true})
+            }
+            commit(Mutations.REMOVE_ORDER)
         }
     }
 })
