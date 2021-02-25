@@ -1,16 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Header />
     <router-view />
   </div>
 </template>
-
+<script>
+import Header from "@/components/header/Header.vue";
+export default {
+  components: { Header },
+};
+</script>
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6em;
+  line-height: 1.6em;
+}
 
 h1,
 h2,
@@ -24,8 +39,8 @@ label {
   color: #000;
 }
 
-p, 
-input{
+p,
+input {
   font-family: "Cantarell", sans-serif;
   color: #000;
 }
