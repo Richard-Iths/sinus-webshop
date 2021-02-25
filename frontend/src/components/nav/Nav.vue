@@ -67,14 +67,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .navigation {
-  position: fixed;
-  bottom: 0;
+  position: sticky;
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 2rem;
   background-color: peachpuff;
-  left: 0;
+  margin-top: auto;
   i {
     margin-top: 1rem;
     color: orangered;

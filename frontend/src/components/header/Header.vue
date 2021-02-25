@@ -1,14 +1,12 @@
 <template>
   <header>
     <logo />
-    <Nav />
   </header>
 </template>
 <script>
 import Logo from "./Logo";
-import Nav from "@/components/nav/Nav.vue";
 export default {
-  components: { Logo, Nav },
+  components: { Logo },
 };
 </script>
 <style lang="scss" scoped>

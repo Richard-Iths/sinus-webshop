@@ -4,12 +4,14 @@
     <main>
       <router-view />
     </main>
+    <Nav/>
   </div>
 </template>
 <script>
 import Header from "@/components/header/Header.vue";
+import Nav from '@/components/nav/Nav.vue';
 export default {
-  components: { Header },
+  components: { Header, Nav },
 };
 </script>
 <style lang="scss">
@@ -35,6 +37,8 @@ body {
 
 #app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
