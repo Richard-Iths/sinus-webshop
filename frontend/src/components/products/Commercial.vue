@@ -43,6 +43,7 @@ export default {
   background-size: cover;
   background-position: center center;
   max-height: 100vh;
+  border-bottom: 3px solid #fff;
   h2,
   h4 {
     color: #fff;
@@ -87,6 +88,7 @@ export default {
   }
   &__sale-text {
     color: #f5f560;
+    text-shadow: 2px 2px #222;
   }
 }
 </style>

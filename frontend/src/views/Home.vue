@@ -9,6 +9,7 @@
         </h2>
       </div>
     </Commercial>
+    <Newsletter />
     <Commercial btnText="LET ME SEE!" :styleObj="newStuff">
       <div class="commercial__sale-container">
         <h2>
@@ -33,10 +34,11 @@
 </template>
 
 <script>
-import Commercial from "@/components/products/Commercial";
+import Commercial from "@/components/products/Commercial.vue";
+import Newsletter from "@/components/newsletter/Newsletter.vue";
 export default {
   name: "Home",
-  components: { Commercial },
+  components: { Commercial, Newsletter },
   data() {
     return {
       sale: {
