@@ -11,7 +11,7 @@
       </div>
       <div class="col-2">
         <label for="password">password</label>
-        <input type="password" v-model="password" name="password">
+        <input type="password" v-model="user.password" name="password">
       </div>
       <div class="col-2">
         <label for="name">name</label>
@@ -49,6 +49,7 @@
           name="city"
         />
       </div>
+      <p v-if="error">{{ error }}</p>
       <Button class="col-2" value="register" @click="register"/>
     </Form>
   </div>
@@ -62,8 +63,14 @@ export default {
     Form,
     Button
   },
+  methods: {
+    async register() {
+      this.error = await this.$store.dispatch('user/register', this.user)
+    }
+  },
   data() {
     return {
+      error: null,
       user: {
         email: "",
         password: "",

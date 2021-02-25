@@ -47,6 +47,15 @@ const user = {
         return error.message;
       }
     },
+    register: async(context, userObj) => {
+      try {
+        const response = await API.registerUser(userObj);
+        context.dispatch('login', userObj)
+        return response
+      } catch (error) {
+        return error.message
+      }
+    },
     updateUser: async ({ commit, getters }, userObj) => {
       try {
         const token = getters.getUserToken;
