@@ -19,14 +19,13 @@ mutations:{
     products.forEach(product => {
         state.productsById[product._id] = product
     });
-    console.log(state.productsById);
   }
 },
 actions:{
   async getProducts({commit}){
       const response = await API.getProducts()
       commit(Mutations.SET_PRODUCTS, response)
-  }
+    }
 },
 }
 
