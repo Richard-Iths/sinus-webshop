@@ -1,10 +1,21 @@
 <template>
-  <div>
-    <Form class="details">
-      <h1 class="col-2">your details</h1>
-      <div class="col-2">
-        <img src="../assets/edit.svg" alt="edit" class="edit" @click="edit" />
+  <div class="profile">
+    <Modal v-if="success" @close="success = false">
+      <div class="success">
+        <p>Info was successfully saved</p>
+        <Button value="Ok thanks!" @click="success = false" />
       </div>
+    </Modal>
+
+    <Form class="details">
+      <h1 class="col-2 title">
+        your details<img
+          src="../assets/edit.svg"
+          alt="edit"
+          class="edit"
+          @click="edit"
+        />
+      </h1>
       <div class="col-1">
         <label for="email">e-mail</label>
         <input
@@ -64,35 +75,39 @@
 <script>
 import Button from "@/components/Button.vue";
 import Form from "@/components/Form.vue";
+import Modal from "@/components/Modal.vue";
 export default {
   name: "Profile",
   components: {
     Button,
     Form,
+    Modal,
   },
   data() {
     return {
-      user: {
-        email: "customer@example.com",
-        name: "David Lundholm",
-        role: "customer",
-        address: {
-          street: "Tokitokvägen 4",
-          zip: "123 46",
-          city: "Tokbergaskogen",
-        },
-        orderHistory: [],
-      },
       editing: false,
+      success: false,
     };
+  },
+  computed: {
+    user() {
+      return this.$store.getters["user/getUser"];
+    },
   },
   methods: {
     edit() {
       this.editing = !this.editing;
     },
-    save() {
+    async save() {
+      await this.$store.dispatch("user/updateUser", this.user);
+      this.success = true;
       this.editing = false;
     },
+  },
+  beforeMount() {
+    if (!this.user) {
+      console.log("not logged in");
+    }
   },
 };
 </script>
@@ -105,6 +120,19 @@ h1 {
 .edit {
   width: 2rem;
   cursor: pointer;
-  align-self: flex-end;
+}
+
+.success {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.title {
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>
