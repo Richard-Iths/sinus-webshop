@@ -48,7 +48,8 @@ label {
 }
 
 p,
-input {
+input,
+select {
   font-family: "Cantarell", sans-serif;
   color: #000;
 }

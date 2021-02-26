@@ -4,18 +4,25 @@
     :style="{
       'background-image': 'url(' + imgSrc + ')'
     }"
+    
   >
-    <div class="product-info">
-      <p class="product-info--title">{{ product.title }}</p>
-      <p class="product-info--desc">{{ product.shortDesc }}</p>
-      <p class="product-info--price">{{ product.price }} SEK</p>
-    </div>
-    <!-- <button @click="addToCart(product)">add to cart</button> -->
+    <ProductDesc class="product-info" :product="product" @clicked="toggleModal" />
+    <Modal v-if="showModal" @close="toggleModal">
+      <ProductModal :product="product" :imgSrc="imgSrc" />
+    </Modal>
   </article>
 </template>
 
 <script>
+import Modal from '@/components/Modal.vue'
+import ProductModal from '@/components/shop/ProductModal.vue'
+import ProductDesc from '@/components/shop/ProductDesc.vue'
+
 export default {
+  components: { Modal, ProductModal, ProductDesc },
+  data(){ return {
+    showModal: false
+  }},
   props: {
     product: Object
   },
@@ -25,8 +32,8 @@ export default {
     }
   },
   methods: {
-    addToCart(product) {
-      this.$store.dispatch("order/updateOrder", product);
+    toggleModal() {
+      this.showModal = !this.showModal
     }
   }
 };
@@ -56,15 +63,6 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
     background-color: rgba(255, 255, 255, 0.8);
-
-    &--title {
-      font-family: "Fjalla One", sans-serif;
-      text-transform: uppercase;
-      font-size: 2rem;
-    }
-    &--desc {
-      text-transform: lowercase;
-    }
   }
   @media only screen and (min-width: 700px) {
     display: grid;
