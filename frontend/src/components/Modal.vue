@@ -25,6 +25,7 @@ export default {
   right: 0;
   display: grid;
   place-items: center;
+  z-index: 1;
 
   background-color: rgba(0, 0, 0, 0.7);
 }
