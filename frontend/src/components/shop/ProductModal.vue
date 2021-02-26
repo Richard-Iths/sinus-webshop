@@ -28,8 +28,7 @@ import AddButton from "@/components/Button.vue";
 export default {
   components: { ProductDesc, AddButton },
   props: {
-    product: Object,
-    imgSrc: String
+    product: Object
   },
   methods: {
     addToCart() {
@@ -57,6 +56,9 @@ export default {
         : this.product.category == "clothes"
         ? "pad-clothes-class"
         : "";
+    },
+    imgSrc() {
+      return require(`@/assets/${this.product.imgFile}`);
     }
   }
 };
