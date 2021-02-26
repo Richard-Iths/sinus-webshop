@@ -41,12 +41,12 @@ export default {
 .commercial {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
-  max-height: 100vh;
+  background-position: center 0;
+  max-height: 70vh;
   border-bottom: 3px solid #fff;
   h2,
   h4 {
-    color: #fff;
+    color: getColor("secondary");
   }
 
   &__inner {
@@ -54,16 +54,15 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    min-height: 72vh;
-    background-color: rgba(0, 0, 0, 0.5);
-
+    min-height: 69vh;
+    background-color: rgba($color: getColor("secondary"), $alpha: 0.5);
     button {
       min-width: 25rem;
       margin: 3rem 2rem;
       display: block;
       align-self: flex-end;
       padding: 2rem;
-      background-color: #222;
+      background-color: getColor("secondaryElements");
       border: 5px solid #fff;
       font-size: 1.2em;
       color: #fff;
@@ -73,9 +72,9 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background-color: rgba($color: getColor("primary"), $alpha: 0.7);
     margin: 0 auto;
     width: 80%;
-    border: 5px solid #c4c0bf;
     padding: 2rem;
     h4 {
       align-self: center;
@@ -87,8 +86,8 @@ export default {
     }
   }
   &__sale-text {
-    color: #f5f560;
-    text-shadow: 2px 2px #222;
+    color: getColor("secondaryText");
+    /* text-shadow: 2px 2px #222; */
   }
 }
 </style>

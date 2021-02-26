@@ -9,5 +9,8 @@ export default {};
 <style lang="scss" scoped>
 .logo {
   min-height: 10vh;
+  color: getColor("primary");
+  background-color: #fff;
+  border-radius: 30%;
 }
 </style>

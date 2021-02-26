@@ -1,0 +1,18 @@
+$colors: (
+  primary: #fff,
+  secondary: #222,
+  secondaryElements: #2b6faf,
+  secondaryText: #ee5c5c,
+);
+
+@function getColor($color) {
+  @return map-get($map: $colors, $key: $color);
+}
+
+@function lightenColor($color, $value) {
+  @return lighten($color: getColor($color), $amount: $value);
+}
+
+@function darkenColor($color, $value) {
+  @return darken($color: getColor($color), $amount: $value);
+}

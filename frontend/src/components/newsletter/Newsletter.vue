@@ -33,8 +33,9 @@ export default {
     color: #fff;
   }
   button {
-    align-self: center;
-    background-color: powderblue;
+    color: getColor("primary");
+    background-color: getColor("secondaryElements");
+    border: 6px solid getColor("primary");
     margin-top: 2rem;
     padding: 2rem;
     min-width: 25rem;

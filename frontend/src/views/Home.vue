@@ -24,9 +24,9 @@
     <Commercial btnText="MATCH ME!" :styleObj="match" class="bg-darker">
       <div class="commercial__sale-container">
         <h2><span class="commercial__sale-text">MATCH GEAR</span></h2>
-        <h4>After your own taste with our awesome</h4>
+        <h4>YOUR TASTE</h4>
         <h2>
-          <span class="commercial__sale-text">MATCHING POSSIBILITIES</span>
+          <span class="commercial__sale-text">AWSOME POSSIBILITIES</span>
         </h2>
       </div>
     </Commercial>

@@ -2,17 +2,18 @@
   <Transition :transitionObj="{ name: 'slide-left', appear: true }">
     <div class="wrapper">
       <Modal v-if="showLoginModal" @close="showLoginModal = false">
-        <Login @close="showLoginModal = false"/>
+        <Login @close="showLoginModal = false" />
       </Modal>
       <div class="apu">
-        <router-link @click.native="$emit('close')" to="/profile" v-if="isLoggedIn">
-          <nav-icon
-            :iconSize="icon.size"
-            icon="manage_accounts"
-          />
+        <router-link
+          @click.native="$emit('close')"
+          to="/profile"
+          v-if="isLoggedIn"
+        >
+          <nav-icon :iconSize="icon.size" icon="manage_accounts" />
         </router-link>
         <div class="apu__login-register" v-if="!isLoggedIn">
-          <Button value="Register" @click="showRegister"/>
+          <Button value="Register" @click="showRegister" />
           <Button value="Login" @click="showLogin" />
         </div>
       </div>
@@ -30,9 +31,7 @@
       </ul>
       <div class="form-input">
         <label for="search"
-          ><nav-icon
-            :iconSize="icon.search"
-            icon="search"
+          ><nav-icon :iconSize="icon.search" icon="search"
         /></label>
         <input type="search" name="search" />
       </div>
@@ -65,35 +64,34 @@ export default {
   },
   methods: {
     showRegister() {
-      this.$router.push({name: "Register"})
-      this.$emit("close")
+      this.$router.push({ name: "Register" });
+      this.$emit("close");
     },
     showLogin() {
-      this.showLoginModal = true
+      this.showLoginModal = true;
     },
   },
 };
 </script>
 <style lang="scss" scoped>
 .wrapper {
-  background-color: #ddd9d9;
+  background-color: getColor("primary");
   position: fixed;
   left: 0;
   top: 0;
-  min-height: 88%;
+  min-height: 86.5vh;
   min-width: 50vw;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: space-between;
-
   i {
     display: block;
     text-align: left;
     padding-top: 1rem;
     padding-left: 1rem;
-    color: #4382ac;
+    color: getColor("secondaryElements");
   }
   .apu {
     margin-top: 2rem;
@@ -103,12 +101,12 @@ export default {
       button {
         min-width: 10rem;
         max-width: 34rem;
-        background-color: #fff;
+        background-color: getcolor("primary");
         color: #222;
         font-size: 1em;
         cursor: pointer;
         &:last-child {
-          background-color: #4382ac;
+          background-color: lightenColor("secondaryElements", 20%);
           color: #fff;
         }
       }

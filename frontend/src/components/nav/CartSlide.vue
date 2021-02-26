@@ -14,11 +14,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .wrapper {
-  background-color: #ddd9d9;
+  background-color: getColor("primary");
   position: fixed;
   right: 0;
   top: 0;
-  min-height: 88%;
+  min-height: 86.5vh;
   min-width: 50vw;
   padding: 1rem;
   display: flex;

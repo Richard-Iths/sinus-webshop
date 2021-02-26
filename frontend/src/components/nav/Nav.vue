@@ -12,7 +12,7 @@
       icon="shopping_cart"
       @click.native="toggleCart"
     />
-    <MobileMenuSlide v-if="showMenu" @close="showMenu = false"/>
+    <MobileMenuSlide v-if="showMenu" @close="showMenu = false" />
     <CartSlide v-if="showCart" />
   </nav>
 </template>
@@ -74,15 +74,19 @@ export default {
   padding: 2rem;
   bottom: 0;
   left: 0;
-  background-color: peachpuff;
+  max-height: 15vh;
+  border: 1px solid #fff;
+  background-color: getColor("secondary");
   margin-top: auto;
   i {
     margin-top: 1rem;
-    color: orangered;
+    /* color: #ff4500; */
+    color: getColor("secondaryText");
     margin-right: 2rem;
   }
   .rotate-icon {
     transform: rotate(180deg);
+    text-shadow: 10px 0px getColor("primary");
     transition: all 0.5s ease;
   }
   .rotate-default {
@@ -90,7 +94,7 @@ export default {
   }
   .popup-icon {
     transform: scale(1.2);
-    text-shadow: peachpuff;
+    text-shadow: 1px 0px getColor("primary");
     transition: all 0.5s ease;
   }
   .popup-default {

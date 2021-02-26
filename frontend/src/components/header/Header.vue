@@ -11,7 +11,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 header {
-  background-color: #ddd9d9;
+  background-color: getColor("secondary");
   padding: 2rem;
   display: flex;
   /* flex-wrap: wrap; */
