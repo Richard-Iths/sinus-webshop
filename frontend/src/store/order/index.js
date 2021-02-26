@@ -15,11 +15,10 @@ const order = ({
         [Mutations.UPDATE_ORDER](state, product){
             let inCart = state.cart.find(item => item._id == product._id)
             if(inCart){
-                const indexOfProduct = state.cart.indexOf(inCart)
-                state.cart[indexOfProduct].amount++
+                inCart.amount++
             } else{
                 product['amount'] = 1
-                state.cart.push(product)
+                state.cart.push({...product, amount: 1})
             }
             state.currentOrder.push(product._id)
         },
