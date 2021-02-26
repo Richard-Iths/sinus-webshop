@@ -19,7 +19,7 @@
       </div>
 
       <ul class="navigation-list">
-        <router-link to="">
+        <router-link @click.native="$emit('close')" to="/shop">
           <li class="navigation-list__item"><h2>SHOP</h2></li>
         </router-link>
         <router-link to="">
