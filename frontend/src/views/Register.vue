@@ -62,6 +62,7 @@
 import Form from "@/components/Form.vue";
 import Button from "@/components/Button.vue";
 export default {
+  name: "Register",
   components: {
     Form,
     Button,
