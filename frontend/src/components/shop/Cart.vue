@@ -26,11 +26,9 @@ export default {
 
         decrease(product){
             this.$store.dispatch('order/decreaseAmount', product)
-            this.$forceUpdate()
         },
         increase(product){
             this.$store.dispatch('order/updateOrder', product)
-            this.$forceUpdate()
         },
         makeOrder(){
             this.$store.dispatch('order/makeOrder')
