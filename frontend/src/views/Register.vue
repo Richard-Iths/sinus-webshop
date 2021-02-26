@@ -1,31 +1,29 @@
 <template>
   <div class="register">
-    <Form>
+    <Form @submit="register">
       <div class="col-2">
         <label for="email">e-mail</label>
-        <input
-          type="text"
-          v-model="user.email"
-          name="email"
-        />
+        <input required="true" type="text" v-model="user.email" name="email" />
       </div>
       <div class="col-2">
         <label for="password">password</label>
-        <input type="password" v-model="user.password" name="password">
+        <input
+          required="true"
+          type="password"
+          v-model="user.password"
+          name="password"
+        />
       </div>
       <div class="col-2">
         <label for="name">name</label>
 
-        <input
-          type="text"
-          v-model="user.name"
-          name="name"
-        />
+        <input required="true" type="text" v-model="user.name" name="name" />
       </div>
 
       <div class="col-2">
         <label for="street">street</label>
         <input
+          required="true"
           type="text"
           v-model="user.address.street"
           name="street"
@@ -35,6 +33,7 @@
         <label for="zip">zip code</label>
 
         <input
+          required="true"
           type="text"
           v-model="user.address.zip"
           name="zip"
@@ -44,33 +43,39 @@
       <div class="col-2">
         <label for="city">city</label>
         <input
+          required="true"
           type="text"
           v-model="user.address.city"
           name="city"
         />
       </div>
-      <p v-if="error">{{ error }}</p>
-      <Button class="col-2" value="register" @click="register"/>
+      <div v-if="errors">
+        <p v-for="error in errors" :key="error" class="error">{{ error }}</p>
+      </div>
+
+      <Button class="col-2" value="register" />
     </Form>
   </div>
 </template>
 
 <script>
 import Form from "@/components/Form.vue";
-import Button from '@/components/Button.vue';
+import Button from "@/components/Button.vue";
 export default {
   components: {
     Form,
-    Button
+    Button,
   },
   methods: {
     async register() {
-      this.error = await this.$store.dispatch('user/register', this.user)
-    }
+      this.errors = (
+        await this.$store.dispatch("user/register", this.user)
+      ).response.data.errors;
+    },
   },
   data() {
     return {
-      error: null,
+      errors: null,
       user: {
         email: "",
         password: "",
@@ -79,14 +84,17 @@ export default {
           city: "",
           zip: "",
           street: "",
-        }
-      }
-    }
+        },
+      },
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.error {
+  color: red;
+}
 form {
   margin: 0 auto;
 }

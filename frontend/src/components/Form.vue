@@ -10,6 +10,7 @@ export default {
   methods: {
     submit (e) {
       e.preventDefault()
+      this.$emit('submit')
     }
   },
 };
