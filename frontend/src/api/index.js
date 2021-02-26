@@ -5,9 +5,10 @@ const BASE_URL = process.env.VUE_APP_API_URL;
 export const authUser = async (userObj) => {
   try {
     const { data } = await axios.post(`${BASE_URL}/auth/`, userObj);
+    console.log(data, "Data");
     return data;
-  } catch (error) {
-    return error;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
   }
 };
 
@@ -15,8 +16,9 @@ export const registerUser = async (userObj) => {
   try {
     const { data } = await axios.post(`${BASE_URL}/register/`, userObj);
     return data;
-  } catch (error) {
-    return error;
+  } catch ({ response }) {
+    console.log(response.data.errors, "errors");
+    throw new Error(response.data.errors);
   }
 };
 
@@ -24,16 +26,16 @@ export const getProducts = async () => {
   try {
     const { data } = await axios.get(`${BASE_URL}/products/`);
     return data;
-  } catch (error) {
-    return error;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
   }
 };
 export const getProductById = async (id) => {
   try {
     const { data } = await axios.get(`${BASE_URL}/products/${id}`);
     return data;
-  } catch (error) {
-    return error;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
   }
 };
 export const makeOrder = async (order, token) => {
@@ -44,8 +46,8 @@ export const makeOrder = async (order, token) => {
       },
     });
     return data;
-  } catch (error) {
-    return error;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
   }
 };
 export const getUserOrders = async (token) => {
@@ -56,8 +58,8 @@ export const getUserOrders = async (token) => {
       },
     });
     return data;
-  } catch (error) {
-    return error;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
   }
 };
 export const getUserProfile = async (token) => {
@@ -68,8 +70,8 @@ export const getUserProfile = async (token) => {
       },
     });
     return data;
-  } catch (error) {
-    return error.message;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
   }
 };
 export const patchUserProfile = async (userObj, token) => {
@@ -80,7 +82,7 @@ export const patchUserProfile = async (userObj, token) => {
       },
     });
     return data;
-  } catch (error) {
-    return error.message;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
   }
 };
