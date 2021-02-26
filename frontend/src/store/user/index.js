@@ -50,6 +50,7 @@ const user = {
     register: async(context, userObj) => {
       try {
         const response = await API.registerUser(userObj);
+        if (response.response.status == 400) return response
         context.dispatch('login', userObj)
         return response
       } catch (error) {
