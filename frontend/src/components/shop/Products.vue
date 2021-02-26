@@ -7,7 +7,7 @@
       @clicked="toggleModal"
     />
     <Modal v-if="showModal" @close="toggleModal">
-      <ProductModal :product="activeProduct" />
+      <ProductModal :product="activeProduct" @close="toggleModal"/>
     </Modal>
   </section>
 </template>

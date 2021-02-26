@@ -1,5 +1,6 @@
 <template>
   <article class="product">
+    <i class="close icon material-icons" @click="$emit('close')"> close </i>
     <div :class="'image-container' + ' ' + padWheelClass">
       <img class="image" :src="imgSrc" :alt="product.shortDesc" />
     </div>
@@ -66,6 +67,14 @@ export default {
 
 <style lang="scss" scoped>
 .product {
+  .close {
+    position: fixed;
+    right: 5%;
+    padding: 1rem 1rem 0 0;
+    font-size: 4rem;
+    cursor: pointer;
+  }
+
   max-width: 90%;
   max-height: 90%;
   background-color: #fff;
@@ -78,7 +87,7 @@ export default {
 
   .image-container {
     grid-row: 1;
-    grid-column: span 2;
+    grid-column: 1 / span 2;
     display: grid;
     place-items: center;
 
@@ -157,6 +166,13 @@ export default {
     }
     .button {
       font-size: 2rem;
+    }
+    .close{
+        position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: right;
+    align-self: start;
     }
   }
 }
