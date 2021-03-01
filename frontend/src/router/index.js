@@ -6,7 +6,8 @@ import About from "../views/About.vue";
 import Profile from "../views/Profile.vue";
 import Register from "../views/Register.vue";
 import Admin from "../views/Admin.vue";
-import Edit from "../components/admin/Edit.vue";
+import NewProduct from "../components/products/NewProduct.vue";
+import DashBoard from "../components/admin/Dashboard.vue";
 
 Vue.use(VueRouter);
 
@@ -42,8 +43,14 @@ const routes = [
     component: Admin,
     children: [
       {
-        path: "/edit/:id",
-        component: Edit,
+        name: "Dashboard",
+        path: "dashboard",
+        component: DashBoard,
+      },
+      {
+        name: "Add Product",
+        path: "product/add",
+        component: NewProduct,
       },
     ],
   },

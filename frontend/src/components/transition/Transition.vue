@@ -63,4 +63,12 @@ export default {
 .slide-left-leave-to {
   transform: translateX(-100%);
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

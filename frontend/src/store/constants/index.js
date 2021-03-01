@@ -6,7 +6,8 @@ export const userConstants = {
 };
 
 export const productsConstants = {
-  SET_PRODUCTS: "setProducts"
+  SET_PRODUCTS: "setProducts",
+  UPDATE_PRODUCTS: "updateProducts",
 };
 
 export const orderConstants = {
