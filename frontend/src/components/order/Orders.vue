@@ -1,5 +1,6 @@
 <template>
   <CollapsableBox
+    class="orders"
     collapsedIcon="keyboard_arrow_down"
     uncollapsedIcon="keyboard_arrow_up"
     :title="'Order number ' + order._id"
@@ -8,6 +9,10 @@
     <div class="order-total">
       <h2>Total:</h2>
       <h2>{{ order.orderValue }}</h2>
+    </div>
+    <div class="order-time">
+      <h2>Order time:</h2>
+      <h2>{{ orderDate }}</h2>
     </div>
   </CollapsableBox>
 </template>
@@ -22,7 +27,13 @@ export default {
     },
   },
   components: { CollapsableBox, OrderDetails },
+  computed: {
+    orderDate() {
+      return new Date(this.order.timeStamp).toString()
+    }
+  }
 };
 </script>
 
-<style lang=""></style>
+<style lang="scss" scoped>
+</style>
