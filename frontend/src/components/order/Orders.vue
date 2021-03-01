@@ -36,4 +36,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.orders{
+  font-size: 1.4rem;
+}
+.order-total{
+  font-size: 1rem;
+}
+.order-time{
+  font-size: 1rem;
+}
 </style>

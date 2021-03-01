@@ -27,6 +27,7 @@ export default {
 .order-details {
   font-family: "Cantarell";
   font-weight: normal;
+  font-size: 1rem;
   &__item {
     &__title-price-amount {
       display: flex;
