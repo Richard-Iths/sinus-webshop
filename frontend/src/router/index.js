@@ -6,6 +6,7 @@ import About from "../views/About.vue";
 import Profile from "../views/Profile.vue";
 import Register from "../views/Register.vue";
 import Admin from "../views/Admin.vue";
+import Edit from "../components/admin/Edit.vue";
 
 Vue.use(VueRouter);
 
@@ -41,8 +42,8 @@ const routes = [
     component: Admin,
     children: [
       {
-        path: "/product/",
-        component: "Edit",
+        path: "/edit/:id",
+        component: Edit,
       },
     ],
   },
