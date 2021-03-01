@@ -17,7 +17,6 @@ const order = {
       if (inCart) {
         inCart.amount++;
       } else {
-        product["amount"] = 1;
         state.cart.push({ ...product, amount: 1 });
       }
       state.currentOrder.push(product._id);
