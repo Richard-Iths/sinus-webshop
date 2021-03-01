@@ -1,15 +1,16 @@
 <template>
   <div class="collapsable">
     <div class="collapsable__header">
-      <h2>{{ title }}</h2>
+      <h2 class="collapsable__title">{{ title }}</h2>
       <navIcon
         @click.native="toggleCollapsed"
         :icon="icon"
         iconSize="icon--big"
       />
     </div>
-
-    <slot v-if="!isCollapsed"></slot>
+    <section v-show="!isCollapsed">
+      <slot></slot>
+    </section>
   </div>
 </template>
 <script>
@@ -50,9 +51,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .collapsable {
+  margin-bottom: 1rem;
   &__header {
     display: flex;
     justify-content: space-between;
+    padding: 0.5rem 2rem;
+  }
+  i {
+    color: getColor("secondaryElements");
   }
 }
 </style>

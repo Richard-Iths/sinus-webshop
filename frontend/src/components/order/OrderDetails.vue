@@ -2,12 +2,12 @@
   <article class="order-details">
     <div class="order-details__item" v-for="item in items" :key="item.id">
       <div class="order-details__item__title-price-amount">
-        <h2 class="order-details__text">{{ item.title }}</h2>
-        <h2 class="order-details__text">{{ item.price }} kr / st</h2>
-        <h2 class="order-details__text">{{ item.amount }} st</h2>
+        <h4 class="order-details__text text--blue">{{ item.title }}</h4>
+        <h4 class="order-details__text">{{ item.price }} kr / st</h4>
+        <h4 class="order-details__text">{{ item.amount }} st</h4>
       </div>
       <div class="order-details__price-total">
-        <h2>Total item price: {{ item.price * item.amount }} kr</h2>
+        <h5>{{ item.price * item.amount }} kr</h5>
       </div>
     </div>
   </article>
@@ -27,11 +27,22 @@ export default {
 .order-details {
   font-family: "Cantarell";
   font-weight: normal;
-  font-size: 1rem;
+  border-top: 3px dotted getColor("secondary");
+  padding: 2rem 0;
   &__item {
+    margin-bottom: 1.5rem;
+    border-bottom: 3px dotted getColor("secondary");
     &__title-price-amount {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    h5 {
+      text-align: right;
+      margin-bottom: 0.5rem;
+    }
+    .text--blue {
+      color: getColor("secondaryElements");
     }
   }
 }
