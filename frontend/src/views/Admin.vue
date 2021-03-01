@@ -5,7 +5,7 @@
       collapsedIcon="arrow_circle_down"
       uncollapsedIcon="arrow_circle_up"
     >
-      <p>This is collapsable box for orders</p>
+      <Orders v-for="order in getOrders" :key="order._id" :order="order" />
     </CollapsableBox>
     <CollapsableBox
       title="Products"
@@ -18,8 +18,15 @@
 </template>
 <script>
 import CollapsableBox from "@/components/utils/CollapsableBox.vue";
+import Orders from "@/components/order/Orders.vue";
 export default {
-  components: { CollapsableBox },
+  components: { CollapsableBox, Orders },
+  computed: {
+    getOrders() {
+      return this.$store.getters["user/getUserOrderHistory"];
+    },
+  },
+  mounted() {},
 };
 </script>
 <style lang="scss" scoped></style>
