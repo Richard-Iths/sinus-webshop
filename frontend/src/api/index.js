@@ -58,6 +58,18 @@ export const patchProduct = async (product, token) => {
     throw new Error(response.data.error);
   }
 };
+export const removeProduct = async (id, token) => {
+  try {
+    const { data } = await axios.delete(`${BASE_URL}/products/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch ({ response }) {
+    throw new Error(response.data.error);
+  }
+};
 export const getProductById = async (id) => {
   try {
     const { data } = await axios.get(`${BASE_URL}/products/${id}`);

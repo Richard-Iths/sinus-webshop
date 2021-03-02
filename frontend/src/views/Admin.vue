@@ -4,7 +4,19 @@
   </section>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    getUserRole() {
+      return this.$store.getters["user/getUser"].role;
+    },
+  },
+
+  mounted() {
+    if (this.getUserRole !== "admin") {
+      this.$router.push("/");
+    }
+  },
+};
 </script>
 <style lang="scss" scoped>
 .admin {

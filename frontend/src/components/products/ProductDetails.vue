@@ -2,6 +2,11 @@
   <div class="form-controller">
     <div class="form-controller__image">
       <img src="@/assets/edit.svg" alt="edit_img" @click="toggleEdit" />
+      <FlashMessage
+        v-if="message"
+        flashColor="flash-message--blue"
+        :message="message"
+      />
     </div>
     <Form>
       <div class="form__input col-1">
@@ -45,7 +50,7 @@
 </template>
 <script>
 import Form from "@/components/Form.vue";
-
+import FlashMessage from "@/components/utils/FlashMessage.vue";
 export default {
   props: {
     product: {
@@ -53,19 +58,33 @@ export default {
       required: true,
     },
   },
-  components: { Form },
+  components: { Form, FlashMessage },
   data() {
     return {
       isEditing: false,
+      flashMessage: false,
+      message: "",
     };
   },
   methods: {
-    removeProduct() {},
+    async removeProduct() {
+      const message = await this.$store.dispatch("products/removeProduct", {
+        id: this.product._id,
+      });
+      this.message = message;
+      setTimeout(() => {
+        this.message = "";
+      }, 1500);
+    },
     async saveProduct() {
-      const error = await this.$store.dispatch("products/updateProduct", {
+      const message = await this.$store.dispatch("products/updateProduct", {
         ...this.product,
       });
-      console.log(error);
+      this.message = message;
+      this.toggleEdit();
+      setTimeout(() => {
+        this.message = "";
+      }, 1500);
     },
     toggleEdit() {
       this.isEditing = !this.isEditing;
@@ -76,6 +95,7 @@ export default {
 <style lang="scss" scoped>
 .form-controller {
   border-bottom: 2px solid #222;
+  position: relative;
   &__image {
     display: flex;
     justify-content: center;

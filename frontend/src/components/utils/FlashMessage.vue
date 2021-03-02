@@ -23,14 +23,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .flash-message {
-  position: fixed;
-  max-height: 10vh;
-  min-width: 100vw;
+  position: absolute;
   bottom: 10rem;
-  left: 0;
+  left: 25%;
+  right: 25%;
   font-weight: bold;
   font-size: 1.3em;
-  padding: 1.5rem;
+  padding: 2rem;
+  text-align: center;
   h3 {
     color: #fff;
   }
