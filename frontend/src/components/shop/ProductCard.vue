@@ -4,25 +4,17 @@
     :style="{
       'background-image': 'url(' + imgSrc + ')'
     }"
-    
+    @click="emitProduct"
   >
-    <ProductDesc class="product-info" :product="product" @clicked="toggleModal" />
-    <Modal v-if="showModal" @close="toggleModal">
-      <ProductModal :product="product" :imgSrc="imgSrc" />
-    </Modal>
+    <ProductDesc class="product-info" :product="product" />
   </article>
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue'
-import ProductModal from '@/components/shop/ProductModal.vue'
 import ProductDesc from '@/components/shop/ProductDesc.vue'
 
 export default {
-  components: { Modal, ProductModal, ProductDesc },
-  data(){ return {
-    showModal: false
-  }},
+  components: { ProductDesc },
   props: {
     product: Object
   },
@@ -32,8 +24,8 @@ export default {
     }
   },
   methods: {
-    toggleModal() {
-      this.showModal = !this.showModal
+    emitProduct(){
+      this.$emit('clicked', this.product)
     }
   }
 };

@@ -1,47 +1,84 @@
-<template>
-  <article class="cart">
-      <h2>Cart</h2>
-    <div class="list" v-for="product in cart" :key="product._id">
-      <p>{{product.title}}</p>
-      <p>{{product.amount}}</p>
-      <button @click="decrease(product)">less</button>
-      <button @click="increase(product)">more</button>
-      <button @click="removeFromCart(product)">remove</button>
+<template lang="">
+  <div class="cart">
+    <article class="cart__products">
+      <CartItem v-for="order in getCart" :key="order.id" :order="order" />
+    </article>
+    <div class="cart__total">
+      <div class="cart__total__sum">
+        <h4>Summa</h4>
+        <div class="dots"></div>
+        <h4>
+          <span class="text-color">{{ getTotal }}</span> kr
+        </h4>
+      </div>
+      <h6>Moms includerat i priset</h6>
     </div>
-    <button @click="makeOrder">make order</button>
-  </article>
+    <Button value="Checkout" />
+  </div>
 </template>
-
 <script>
+import CartItem from "./CartItem";
+import Button from "@/components/Button.vue";
 export default {
-    computed: {
-        cart(){
-            return this.$store.getters['order/getCart']
-        }
+  components: { CartItem, Button },
+  computed: {
+    getCart() {
+      return this.$store.getters["order/getCart"];
     },
-    methods: {
-        removeFromCart(product){
-            this.$store.dispatch('order/removeFromOrder', product)
-        },
-
-        decrease(product){
-            this.$store.dispatch('order/decreaseAmount', product)
-        },
-        increase(product){
-            this.$store.dispatch('order/updateOrder', product)
-        },
-        makeOrder(){
-            this.$store.dispatch('order/makeOrder')
-        }
-    }
-}
+    getTotal() {
+      return this.getCart.reduce((prevVal, currentVal) => {
+        return prevVal + currentVal.amount * currentVal.price;
+      }, 0);
+    },
+  },
+};
 </script>
-
 <style lang="scss" scoped>
-.cart{
-    display:flex;
-    .list{
-        margin: 1rem;
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 85vh;
+  padding: 2rem;
+
+  button {
+    background-color: getColor("secondaryElements");
+    color: #fff;
+    border: none;
+    padding: 2rem 0;
+    margin-bottom: 4rem;
+  }
+
+  .text-color {
+    color: getColor("secondaryElements");
+  }
+
+  &__products {
+    flex-grow: 1;
+    max-height: 45vh;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
     }
+  }
+  &__total {
+    &__sum {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .dots {
+        flex-grow: 1;
+        border-bottom: 2px dotted #000;
+        max-height: 0.1rem;
+        margin: 1.2rem 1rem 0 1rem;
+      }
+    }
+    h6 {
+      text-align: center;
+    }
+  }
 }
 </style>
