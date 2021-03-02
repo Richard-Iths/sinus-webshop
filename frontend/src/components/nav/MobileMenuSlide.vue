@@ -19,14 +19,24 @@
       </div>
 
       <ul class="navigation-list">
+        <router-link @click.native="$emit('close')" to="/">
+          <li class="navigation-list__item"><h2>HOME</h2></li>
+        </router-link>
         <router-link @click.native="$emit('close')" to="/shop">
           <li class="navigation-list__item"><h2>SHOP</h2></li>
         </router-link>
-        <router-link to="">
+        <router-link to="" @click.native="$emit('close')">
           <li class="navigation-list__item"><h2>ABOUT</h2></li>
         </router-link>
-        <router-link to="">
-          <li class="navigation-ist__item"><h2>CONTACT</h2></li>
+        <router-link to="" @click.native="$emit('close')">
+          <li class="navigation-list__item"><h2>CONTACT</h2></li>
+        </router-link>
+        <router-link
+          to="/admin/dashboard"
+          v-if="isAdmin"
+          @click.native="$emit('close')"
+        >
+          <li class="navigation-list__item"><h2>ADMIN</h2></li>
         </router-link>
       </ul>
       <div class="form-input">
@@ -50,6 +60,9 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$store.getters["user/getUserToken"];
+    },
+    isAdmin() {
+      return this.$store.getters["user/getUser"].role === "admin";
     },
   },
   data() {
