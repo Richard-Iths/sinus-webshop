@@ -4,12 +4,12 @@
     <main>
       <router-view />
     </main>
-    <Nav/>
+    <Nav />
   </div>
 </template>
 <script>
 import Header from "@/components/header/Header.vue";
-import Nav from '@/components/nav/Nav.vue';
+import Nav from "@/components/nav/Nav.vue";
 export default {
   components: { Header, Nav },
   mounted() {
@@ -17,7 +17,7 @@ export default {
     if(token){
       this.$store.dispatch('user/getUser', token)
     }
-  }
+  },
 };
 </script>
 <style lang="scss">
@@ -64,5 +64,14 @@ input,
 select {
   font-family: "Cantarell", sans-serif;
   color: #000;
+}
+@include desktop {
+  button,
+  a {
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.5s ease;
+    }
+  }
 }
 </style>

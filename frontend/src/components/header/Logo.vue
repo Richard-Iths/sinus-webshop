@@ -8,6 +8,7 @@ export default {};
 </script>
 <style lang="scss" scoped>
 .logo {
+  min-width: 15vw;
   min-height: 10vh;
   color: getColor("primary");
   background-color: #fff;
