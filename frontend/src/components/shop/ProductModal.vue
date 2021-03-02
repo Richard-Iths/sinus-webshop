@@ -7,11 +7,12 @@
     <ProductDesc class="product-info" :product="product">
       <div class="size-container">
         <label for="size">SIZE</label>
-        <select id="size">
+        <select v-if="sizes.length > 0" id="size">
           <option v-for="size in sizes" :key="size" :value="size">
             {{ size }}
           </option>
         </select>
+        <p v-else type="text" >ONE SIZE</p>
       </div>
       <AddButton class="button" @click="addToCart" :value="'add to cart'" />
     </ProductDesc>
@@ -43,12 +44,12 @@ export default {
         case "board":
           return ["7'8", "8'0", "8'25"];
         case "wheels":
-        case undefined:
           return ["52mm", "53mm", "54mm"];
         case "clothes":
           return ["XS", "S", "M", "L", "XL"];
+        case undefined:
         default:
-          return [];
+          return '';
       }
     },
     padWheelClass() {
