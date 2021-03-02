@@ -13,7 +13,11 @@
       </div>
       <h6>Moms includerat i priset</h6>
     </div>
+<<<<<<< HEAD
     <Button value="Checkout" @click="checkout"/>
+=======
+    <Button value="Checkout" @click="checkout" />
+>>>>>>> develop
   </div>
 </template>
 <script>
@@ -33,8 +37,12 @@ export default {
   },
   methods: {
     checkout() {
+<<<<<<< HEAD
       this.$emit('close')
       this.$router.push({ name: "Checkout" });
+=======
+      this.$store.dispatch("order/makeOrder");
+>>>>>>> develop
     },
   },
 };
