@@ -92,13 +92,14 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
-  min-height: 86.5vh;
-  min-width: 50vw;
+  min-height: 100%;
+  min-width: 70vw;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: space-between;
+  box-shadow: 5px 0 15px rgba($color: getColor("primary"), $alpha: 0.5);
   i {
     display: block;
     text-align: left;
