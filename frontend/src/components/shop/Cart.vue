@@ -13,7 +13,7 @@
       </div>
       <h6>Moms includerat i priset</h6>
     </div>
-    <Button value="Checkout" />
+    <Button value="Checkout" @click="checkout"/>
   </div>
 </template>
 <script>
@@ -29,6 +29,12 @@ export default {
       return this.getCart.reduce((prevVal, currentVal) => {
         return prevVal + currentVal.amount * currentVal.price;
       }, 0);
+    },
+  },
+  methods: {
+    checkout() {
+      this.$emit('close')
+      this.$router.push({ name: "Checkout" });
     },
   },
 };

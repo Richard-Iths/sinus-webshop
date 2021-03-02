@@ -2,7 +2,7 @@
   <Transition :transitionObj="{ appear: true }">
     <section class="wrapper">
       <h2>Current Order</h2>
-      <Cart />
+      <Cart @close="$emit('close')"/>
     </section>
   </Transition>
 </template>
