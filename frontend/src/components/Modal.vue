@@ -26,7 +26,7 @@ export default {
   display: grid;
   place-items: center;
   z-index: 1;
-
+  overflow: scroll;
   background-color: rgba(0, 0, 0, 0.7);
 }
 </style>

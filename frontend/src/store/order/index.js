@@ -73,11 +73,12 @@ const order = {
       const token = rootGetters["user/getUserToken"];
       const orderObj = { items: state.currentOrder };
 
-      await API.makeOrder(orderObj, token);
+      const order = await API.makeOrder(orderObj, token);
       if (token) {
         dispatch("user/updateOrderHistory", state.cart, { root: true });
       }
       commit(Mutations.REMOVE_ORDER);
+      return order
     },
   },
 };

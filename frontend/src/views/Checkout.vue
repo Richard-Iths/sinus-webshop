@@ -13,6 +13,9 @@
       Total: <span class="blue">{{ total }}</span> kr
     </h4>
     <Button class="margin-1" value="Place order" @click="placeOrder" />
+    <Modal v-if="displayOrder" @close="displayOrder = false">
+      <Orders v-if="order" :order="order" class="order-modal"/>
+    </Modal>
   </div>
 </template>
 
@@ -20,18 +23,25 @@
 import CheckoutForm from "@/components/CheckoutForm.vue";
 import CartItem from "@/components/shop/CartItem.vue";
 import Button from "@/components/Button.vue";
+import Orders from "@/components/order/Orders.vue"
+import Modal from "@/components/Modal.vue"
+
 export default {
   name: "Checkout",
   components: {
     CheckoutForm,
     CartItem,
     Button,
+    Orders,
+    Modal
   },
   data() {
     return {
+      order: undefined,
       anonymousUser: undefined,
       disableForm: false,
       error: undefined,
+      displayOrder: false
     };
   },
   computed: {
@@ -57,10 +67,12 @@ export default {
       this.anonymousUser = user;
       this.disableForm = true;
     },
-    placeOrder() {
+    async placeOrder() {
       if ((this.cart.length !== 0 && this.anonymousUser) || this.user) {
         this.error = undefined
-        this.$store.dispatch("order/makeOrder");
+        const order = await this.$store.dispatch("order/makeOrder");
+        this.order = order
+        this.displayOrder = true
       } else {
         if (!this.anonymousUser) {
           this.error = "Please provide all information";
@@ -101,5 +113,10 @@ export default {
 
 .margin-1 {
   margin: 1rem;
+}
+
+.order-modal {
+  background: white;
+  padding: 1rem;
 }
 </style>
