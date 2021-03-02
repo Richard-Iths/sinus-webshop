@@ -75,7 +75,6 @@ const user = {
         const user = await API.getUserProfile(token)
         const orderHistory = await API.getUserOrders(token)
         const data = {user, items: [...orderHistory], token}
-        console.log(data);
         commit(Mutations.LOGIN, data)
       } catch (error) {
         return error;

@@ -14,7 +14,6 @@ export default {
   components: { Header, Nav },
   mounted() {
     const token = sessionStorage.userToken
-    console.log(token);
     if(token){
       this.$store.dispatch('user/getUser', token)
     }
