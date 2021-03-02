@@ -42,8 +42,14 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 0;
-  max-height: 70vh;
-  border-bottom: 3px solid #fff;
+  min-height: 70vh;
+  border-bottom: 5px solid #fff;
+
+  @include desktop {
+    min-height: 50vh;
+    background-position: center center;
+  }
+
   h2,
   h4 {
     color: getColor("secondary");
@@ -54,8 +60,14 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    min-height: 69vh;
+    min-height: 70vh;
     background-color: rgba($color: getColor("secondary"), $alpha: 0.5);
+    @include desktop {
+      min-height: 49.5vh;
+    }
+    @include largeDesktop {
+      /* font-size: 1.5em; */
+    }
     button {
       min-width: 25rem;
       margin: 3rem 2rem;
@@ -66,6 +78,10 @@ export default {
       border: 5px solid #fff;
       font-size: 1.2em;
       color: #fff;
+
+      @include tablet {
+        align-self: center;
+      }
     }
   }
   &__sale-container {
@@ -76,6 +92,8 @@ export default {
     margin: 0 auto;
     width: 80%;
     padding: 2rem;
+    max-width: 34rem;
+
     h4 {
       align-self: center;
     }
@@ -84,9 +102,12 @@ export default {
         align-self: flex-end;
       }
     }
+    @include tablet {
+    }
   }
   &__sale-text {
-    color: getColor("secondaryText");
+    color: #fff;
+    text-shadow: 2px 2px getColor("secondary");
     /* text-shadow: 2px 2px #222; */
   }
 }

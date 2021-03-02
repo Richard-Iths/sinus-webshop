@@ -7,7 +7,7 @@
       @click.native="toggleMenu"
     />
     <NavIcon
-      :class="`${popup} hide-desktop`"
+      :class="`${popup}`"
       :iconSize="icon.size"
       icon="shopping_cart"
       @click.native="toggleCart"
@@ -75,9 +75,16 @@ export default {
   bottom: 0;
   left: 0;
   max-height: 15vh;
-  border: 1px solid #fff;
   background-color: getColor("secondary");
   margin-top: auto;
+  @include desktop {
+    justify-content: flex-end;
+  }
+  .hide-desktop {
+    @include desktop {
+      display: none;
+    }
+  }
   i {
     margin-top: 1rem;
     /* color: #ff4500; */

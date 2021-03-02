@@ -20,8 +20,7 @@ export default {
   position: fixed;
   right: 0;
   top: 0;
-  min-height: 86.5vh;
-  max-height: 86.5vh;
+  min-height: 100%;
   min-width: 80vw;
   padding: 1rem;
   display: flex;
