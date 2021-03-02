@@ -38,7 +38,7 @@
       </div>
       <div class="form-controller__action-panel">
         <button @click="saveProduct">Update Product</button>
-        <button @click="saveProduct">Remove Product</button>
+        <button @click="removeProduct">Remove Product</button>
       </div>
     </Form>
   </div>
@@ -60,7 +60,13 @@ export default {
     };
   },
   methods: {
-    saveProduct() {},
+    removeProduct() {},
+    async saveProduct() {
+      const error = await this.$store.dispatch("products/updateProduct", {
+        ...this.product,
+      });
+      console.log(error);
+    },
     toggleEdit() {
       this.isEditing = !this.isEditing;
     },

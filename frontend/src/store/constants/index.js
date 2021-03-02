@@ -7,7 +7,8 @@ export const userConstants = {
 
 export const productsConstants = {
   SET_PRODUCTS: "setProducts",
-  UPDATE_PRODUCTS: "updateProducts",
+  CREATE_PRODUCT: "createProduct",
+  UPDATE_PRODUCT: "updateProduct",
 };
 
 export const orderConstants = {

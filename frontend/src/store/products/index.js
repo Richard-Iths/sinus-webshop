@@ -19,8 +19,15 @@ const products = {
         state.productsById[product._id] = product;
       });
     },
-    [Mutations.UPDATE_PRODUCTS](state, product) {
+    [Mutations.CREATE_PRODUCT](state, product) {
       state.products.push(product);
+      state.productsById[product._id] = product;
+    },
+    [Mutations.UPDATE_PRODUCT](state, product) {
+      const existingProducts = state.products.filter(
+        (prod) => prod._id !== product._id
+      );
+      existingProducts.push(product);
       state.productsById[product._id] = product;
     },
   },
@@ -33,8 +40,16 @@ const products = {
       try {
         const token = rootGetters["user/getUserToken"];
         const data = await API.postProduct(product, token);
-        console.log(data);
-        commit(Mutations.UPDATE_PRODUCTS, data.product);
+        commit(Mutations.CREATE_PRODUCT, data.product);
+      } catch (error) {
+        return error;
+      }
+    },
+    async updateProduct({ commit, rootGetters }, product) {
+      try {
+        const token = rootGetters["user/getUserToken"];
+        const data = await API.patchProduct(product, token);
+        commit(Mutations.UPDATE_PRODUCT, data.data);
       } catch (error) {
         return error;
       }
