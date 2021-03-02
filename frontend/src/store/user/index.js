@@ -42,6 +42,7 @@ const user = {
         const userData = await API.authUser(userObj);
         const orderHistory = await API.getUserOrders(userData.token);
         const data = { ...userData, items: [...orderHistory] };
+        sessionStorage.setItem('userToken', userData.token)
         commit(Mutations.LOGIN, data);
       } catch (error) {
         return error.message;
@@ -69,6 +70,17 @@ const user = {
     updateOrderHistory: async ({ commit }, order) => {
       commit(Mutations.UPDATE_ORDER_HISTORY, order);
     },
+    getUser: async ({ commit }, token) => {
+      try {
+        const user = await API.getUserProfile(token)
+        const orderHistory = await API.getUserOrders(token)
+        const data = {user, items: [...orderHistory], token}
+        console.log(data);
+        commit(Mutations.LOGIN, data)
+      } catch (error) {
+        return error;
+      }
+    }
   },
 };
 
