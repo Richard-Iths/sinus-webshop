@@ -56,7 +56,7 @@ export default {
     justify-content: flex-end;
     background-color: rgba(255, 255, 255, 0.8);
   }
-  @media only screen and (min-width: 700px) {
+  @include tablet {
     display: grid;
     place-items: center;
     justify-content: initial;
@@ -70,6 +70,7 @@ export default {
     &:hover {
       background-size: cover;
       background-position: top left;
+      cursor: pointer;
 
       & > .product-info {
         display: flex;

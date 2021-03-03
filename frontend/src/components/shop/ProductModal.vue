@@ -5,19 +5,21 @@
       <img class="image" :src="imgSrc" :alt="product.shortDesc" />
     </div>
     <ProductDesc class="product-info" :product="product">
-      <div class="size-container">
-        <label for="size">SIZE</label>
-        <select v-if="sizes.length > 0" id="size">
-          <option v-for="size in sizes" :key="size" :value="size">
-            {{ size }}
-          </option>
-        </select>
-        <p v-else type="text" >ONE SIZE</p>
+      <div class="actions">
+        <div class="size-container">
+          <label for="size">SIZE</label>
+          <select v-if="sizes.length > 0" id="size">
+            <option v-for="size in sizes" :key="size" :value="size">
+              {{ size }}
+            </option>
+          </select>
+          <p v-else type="text">ONE SIZE</p>
+        </div>
+        <AddButton class="button" @click="addToCart" :value="buttonText" />
       </div>
-      <AddButton class="button" @click="addToCart" :value="'add to cart'" />
     </ProductDesc>
     <div class="desc-container">
-      <h2>description</h2>
+      <h2>DESCRIPTION</h2>
       <p class="desc-container--text">{{ product.longDesc }}</p>
     </div>
   </article>
@@ -29,12 +31,16 @@ import AddButton from "@/components/Button.vue";
 
 export default {
   components: { ProductDesc, AddButton },
+  data() { return {
+    buttonText: 'add to cart'
+  }},
   props: {
     product: Object
   },
   methods: {
     addToCart() {
       this.$store.dispatch("order/updateOrder", this.product);
+      this.buttonText = 'added to cart'
     }
   },
 
@@ -49,7 +55,7 @@ export default {
           return ["XS", "S", "M", "L", "XL"];
         case undefined:
         default:
-          return '';
+          return "";
       }
     },
     padWheelClass() {
@@ -108,29 +114,35 @@ export default {
     grid-row: 2;
     grid-column: span 2;
     padding: 2rem;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; */
     &--title {
       text-transform: uppercase;
       font-size: 2rem;
     }
 
-    .size-container {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1rem;
-      select {
-        outline: none;
-        border: 2px solid black;
-        border-radius: none;
-        padding: 0.7rem;
+    .actions {
+      grid-column: span 2;
+
+      .size-container {
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0;
+        select {
+          outline: none;
+          border: 2px solid black;
+          border-radius: none;
+          padding: 0.7rem;
+          cursor: pointer;
+        }
       }
     }
 
     .button {
       font-size: 2rem;
       padding: 1rem 0;
+      width: 100%;
     }
   }
   .desc-container {
@@ -148,12 +160,7 @@ export default {
       text-align: left;
     }
   }
-  @media only screen and (min-width: 700px) {
-    max-height: 70%;
-    max-width: 60rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-
+  @include tablet {
     grid-template-rows: 1fr 1fr;
 
     .image-container {
@@ -168,13 +175,16 @@ export default {
     .button {
       font-size: 2rem;
     }
-    .close{
-        position: relative;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: right;
-    align-self: start;
+    .close {
+      right: initial;
     }
+  }
+  @include desktop {
+    max-height: 70%;
+    max-width: 60rem;
+    margin-bottom: 3%;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 </style>

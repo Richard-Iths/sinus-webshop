@@ -15,8 +15,10 @@ export default {
 <style lang="scss" scoped>
 .shop{
   h1{
-    margin: 2rem 0 0 5rem;
+    margin-top: 2rem;
     font-size: 3rem;
   }
+  display: grid;
+  place-items: center;
 }
 </style>

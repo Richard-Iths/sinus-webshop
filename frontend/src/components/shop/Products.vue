@@ -44,6 +44,7 @@ export default {
 <style lang="scss" scoped>
   .products {
     width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
