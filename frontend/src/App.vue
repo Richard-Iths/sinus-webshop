@@ -13,10 +13,9 @@ import Nav from "@/components/nav/Nav.vue";
 export default {
   components: { Header, Nav },
   mounted() {
-    const token = sessionStorage.userToken;
-    console.log(token);
-    if (token) {
-      this.$store.dispatch("user/getUser", token);
+    const token = sessionStorage.userToken
+    if(token){
+      this.$store.dispatch('user/getUser', token)
     }
   },
 };
@@ -61,6 +60,7 @@ label {
 }
 
 p,
+h6,
 input,
 select {
   font-family: "Cantarell", sans-serif;

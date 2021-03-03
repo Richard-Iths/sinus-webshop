@@ -5,7 +5,7 @@ Samla era erfarenheter från Kanban, Scrum och diskussionerna av Modern Agile oc
 gruppen om vilka delar och hur ni ska inkorporera detta i ert arbete. 
 Dokumentera vad ni kommer överens om i README.md i ert repository.
 
-Arbetssättet som tänkts användas är inspirerat av agila metoder. Features är definierade efter vad användarna behöver. På github skapas en develop branch och utifrån den skapas en egen branch för specifika features.
+Arbetssättet som tänkts användas är inspirerat av agila metoder. Varje morgon har vi ett möte som innehåller code reviews och en allmän uppdatering på hur vi ligger till i tidsplanen. Varje eftermiddag har vi en kort show-and-tell där vi visar upp vad vi gjort under dagen. Features är definierade efter vad användarna behöver. På github skapas en develop branch och utifrån den skapas en egen branch för specifika features.
 
 För att dokumentera och strukturera arbetet används webbappen Trello. I Trello har arbetet strukturerats på följande vis i kolumner. 
 		

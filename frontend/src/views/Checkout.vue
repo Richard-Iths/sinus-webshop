@@ -13,8 +13,13 @@
       Total: <span class="blue">{{ total }}</span> kr
     </h4>
     <Button class="margin-1" value="Place order" @click="placeOrder" />
-    <Modal v-if="displayOrder" @close="displayOrder = false">
-      <Orders v-if="order" :order="order" class="order-modal"/>
+    <Modal v-if="displayOrder" @close="closeModal">
+      <article class="order-modal">
+        <h2>THANK YOU</h2>
+        <p>We will have your order on its way as soon as possible, 
+          in the meantime you can find your order details below. </p>
+        <Orders v-if="order" :order="order" />
+      </article>
     </Modal>
   </div>
 </template>
@@ -84,6 +89,10 @@ export default {
     edit() {
       this.disableForm = false;
     },
+    closeModal() {
+      this.displayOrder = false
+      this.$router.push('/')
+    }
   },
 };
 </script>
@@ -114,9 +123,18 @@ export default {
 .margin-1 {
   margin: 1rem;
 }
-
 .order-modal {
+  max-width: 60%;
   background: white;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2{
+    margin-top: 1rem;
+  }
+  p{
+    margin: 2rem 1rem;
+  }
 }
 </style>
