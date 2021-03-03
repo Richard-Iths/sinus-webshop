@@ -1,11 +1,14 @@
 <template>
   <section class="products">
-    <ProductCard 
-      v-for="product in products"
-      :key="product._id"
-      :product="product"
-      @clicked="toggleModal"
-    />
+    <FilterProducts class="filter" v-on:filter="filterProducts"/>
+    <div class="product-list">
+      <ProductCard 
+        v-for="product in productList"
+        :key="product._id"
+        :product="product"
+        @clicked="toggleModal"
+      />
+    </div>
     <Modal v-if="showModal" @close="toggleModal">
       <ProductModal :product="activeProduct" @close="toggleModal"/>
     </Modal>
@@ -14,14 +17,16 @@
 
 <script>
 import ProductCard from "@/components/shop/ProductCard.vue";
-import Modal from '@/components/Modal.vue'
-import ProductModal from '@/components/shop/ProductModal.vue'
+import Modal from '@/components/Modal.vue';
+import ProductModal from '@/components/shop/ProductModal.vue';
+import FilterProducts from '@/components/shop/FilterProducts.vue';
 
 export default {
-  components: { ProductCard, Modal, ProductModal },
+  components: { ProductCard, Modal, ProductModal, FilterProducts },
   data(){ return {
     showModal: false,
-    activeProduct: {}
+    activeProduct: {},
+    productList: []
   }},
   computed: {
     products() {
@@ -32,11 +37,22 @@ export default {
     toggleModal(product) {
       this.activeProduct = product
       this.showModal = !this.showModal
+    },
+    filterProducts(arr) {
+      console.log(arr);
+      if(arr.length > 0){
+        this.productList = this.products.filter(product => arr.includes(product.category))
+      } else {
+        this.productList = this.products
+      }
+    },
+    async initProducts() {
+      await this.$store.dispatch("products/getProducts");
+      this.productList = this.products
     }
   },
-
   mounted() {
-    this.$store.dispatch("products/getProducts");
+    this.initProducts()
   }
 };
 </script>
@@ -45,8 +61,18 @@ export default {
   .products {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+
+    .filter{
+      margin: 1rem;
+    }
+
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
   }
 </style>
