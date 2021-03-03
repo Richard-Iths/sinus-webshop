@@ -42,15 +42,16 @@ export default {
 .login {
   background: white;
   width: 85%;
-}
 
-@media screen and (min-width: 800px) {
-  .login {
+  @include tablet {
     max-width: 25rem;
   }
-}
-
-button {
-  margin-left: calc(0.2rem + 2px);
+  @include desktop {
+    max-width: 30rem;
+    padding: 1rem;
+  }
+  button {
+    margin-left: calc(0.2rem + 2px);
+  }
 }
 </style>
