@@ -133,6 +133,7 @@ export default {
   &__new-stuff {
     filter: grayscale(75%);
     max-width: 100%;
+    border-left: 5px solid rgba($color: getColor("primary"), $alpha: 0.5);
     .commerical__sale-container__text-wrapper {
       min-height: 47vh;
       margin-top: 10rem;

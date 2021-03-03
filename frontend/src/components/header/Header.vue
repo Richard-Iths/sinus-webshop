@@ -17,7 +17,7 @@ header {
   background-color: getColor("secondary");
   padding: 2rem;
   display: flex;
-  border-bottom: 5px solid getColor("primary");
+  border-bottom: 5px solid rgba($color: getColor("primary"), $alpha: 0.5);
   justify-content: space-between;
 }
 </style>

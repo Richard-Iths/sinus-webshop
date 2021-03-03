@@ -84,7 +84,7 @@ export default {
   min-height: 15vh;
   background-color: getColor("secondary");
   margin-top: auto;
-  border-top: 5px solid #fff;
+  border-top: 5px solid rgba($color: getColor("primary"), $alpha: 0.5);
   .hide-desktop {
     @include desktop {
       display: none;
@@ -94,12 +94,12 @@ export default {
     margin-top: 1rem;
     /* color: #ff4500; */
     color: getColor("secondaryText");
-    margin-right: 4rem;
     z-index: 99999;
     align-self: center;
     @include desktop {
       font-size: 3.5em;
       margin-top: 0;
+      margin-right: 4rem;
     }
   }
   .rotate-icon {
