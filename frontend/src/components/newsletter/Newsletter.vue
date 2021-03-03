@@ -22,12 +22,11 @@ export default {
 <style lang="scss" scoped>
 .newsletter {
   background-color: #222;
-  min-height: 70vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 3px solid #fff;
   @include desktop {
     min-height: 20vh;
     flex-direction: row;

@@ -100,6 +100,13 @@ export default {
   align-content: center;
   justify-content: space-between;
   box-shadow: 5px 0 15px rgba($color: getColor("primary"), $alpha: 0.5);
+
+  @include tablet {
+    min-width: 40vw;
+  }
+  @include desktop {
+    min-width: 20vw;
+  }
   i {
     display: block;
     text-align: left;
@@ -138,8 +145,9 @@ export default {
   .form-input {
     display: flex;
     flex-direction: column;
-    align-self: flex-end;
-    margin: 1rem 0;
+    align-self: center;
+    margin: 0rem 0 8rem 0;
+
     i {
       color: #222;
     }

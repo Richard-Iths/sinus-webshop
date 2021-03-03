@@ -13,7 +13,7 @@
       </div>
       <h6>Moms includerat i priset</h6>
     </div>
-    <Button value="Checkout" @click="checkout"/>
+    <Button value="Checkout" @click="checkout" />
   </div>
 </template>
 <script>
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     checkout() {
-      this.$emit('close')
+      this.$emit("close");
       this.$router.push({ name: "Checkout" });
     },
   },
@@ -53,6 +53,9 @@ export default {
     border: none;
     padding: 2rem 0;
     margin-bottom: 4rem;
+    min-width: 25rem;
+    max-width: 34rem;
+    align-self: center;
   }
 
   .text-color {

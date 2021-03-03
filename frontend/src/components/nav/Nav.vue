@@ -6,6 +6,12 @@
       icon="segment"
       @click.native="toggleMenu"
     />
+    <div class="form-input">
+      <label for="search"
+        ><nav-icon :iconSize="icon.search" icon="search"
+      /></label>
+      <input type="search" name="search" />
+    </div>
     <NavIcon
       :class="`${popup}`"
       :iconSize="icon.size"
@@ -13,7 +19,7 @@
       @click.native="toggleCart"
     />
     <MobileMenuSlide v-if="showMenu" @close="showMenu = false" />
-    <CartSlide v-if="showCart" @close="showCart = false"/>
+    <CartSlide v-if="showCart" @close="showCart = false" />
   </nav>
 </template>
 <script>
@@ -75,11 +81,10 @@ export default {
   bottom: 0;
   left: 0;
   max-height: 15vh;
+  min-height: 15vh;
   background-color: getColor("secondary");
   margin-top: auto;
-  @include desktop {
-    justify-content: flex-end;
-  }
+  border-top: 5px solid #fff;
   .hide-desktop {
     @include desktop {
       display: none;
@@ -89,7 +94,13 @@ export default {
     margin-top: 1rem;
     /* color: #ff4500; */
     color: getColor("secondaryText");
-    margin-right: 2rem;
+    margin-right: 4rem;
+    z-index: 99999;
+    align-self: center;
+    @include desktop {
+      font-size: 3.5em;
+      margin-top: 0;
+    }
   }
   .rotate-icon {
     transform: rotate(180deg);
@@ -109,6 +120,37 @@ export default {
   }
   &__list {
     list-style-type: none;
+  }
+  .form-input {
+    display: none;
+    flex-direction: column;
+    margin: 1rem auto;
+    max-width: 50rem;
+    align-self: center;
+    @include desktop {
+      display: flex;
+      flex-grow: 1;
+    }
+    i {
+      color: #222;
+      @include desktop {
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+        font-size: 3em;
+      }
+    }
+    input {
+      border: 3px solid #000;
+      padding: 2rem 2rem 2rem 6rem;
+      outline: none;
+      color: getColor("secondaryElements");
+      font-weight: bold;
+      /* font-size: 1.2em; */
+    }
+    label {
+      position: absolute;
+      margin-top: 0.2rem;
+    }
   }
 }
 </style>

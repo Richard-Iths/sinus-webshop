@@ -2,7 +2,7 @@
   <Transition :transitionObj="{ appear: true }">
     <section class="wrapper">
       <h2>Current Order</h2>
-      <Cart @close="$emit('close')"/>
+      <Cart @close="$emit('close')" />
     </section>
   </Transition>
 </template>
@@ -27,6 +27,12 @@ export default {
   flex-direction: column;
   align-content: center;
   padding-top: 2rem;
+  @include tablet {
+    min-width: 40vw;
+  }
+  @include desktop {
+    min-width: 30vw;
+  }
   h2 {
     text-align: center;
     color: getColor("secondaryText");

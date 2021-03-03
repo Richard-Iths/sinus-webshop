@@ -42,73 +42,21 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 0;
-  min-height: 70vh;
-  border-bottom: 5px solid #fff;
-
-  @include desktop {
-    min-height: 50vh;
-    background-position: center center;
-  }
-
-  h2,
-  h4 {
-    color: getColor("secondary");
-  }
-
   &__inner {
+    background-color: rgba($color: getColor("secondary"), $alpha: 0.7);
     display: flex;
     flex-direction: column;
+    padding: 5rem 0;
     justify-content: center;
-    align-content: center;
-    min-height: 70vh;
-    background-color: rgba($color: getColor("secondary"), $alpha: 0.5);
-    @include desktop {
-      min-height: 49.5vh;
-    }
-    @include largeDesktop {
-      /* font-size: 1.5em; */
-    }
     button {
-      min-width: 25rem;
-      margin: 3rem 2rem;
-      display: block;
-      align-self: flex-end;
       padding: 2rem;
+      border: 5px solid getColor("primary");
       background-color: getColor("secondaryElements");
-      border: 5px solid #fff;
-      font-size: 1.2em;
-      color: #fff;
-
-      @include tablet {
-        align-self: center;
-      }
-    }
-  }
-  &__sale-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: rgba($color: getColor("primary"), $alpha: 0.7);
-    margin: 0 auto;
-    width: 80%;
-    padding: 2rem;
-    max-width: 34rem;
-
-    h4 {
+      display: block;
+      min-width: 25rem;
       align-self: center;
+      color: getColor("primary");
     }
-    h2 {
-      &:last-of-type {
-        align-self: flex-end;
-      }
-    }
-    @include tablet {
-    }
-  }
-  &__sale-text {
-    color: #fff;
-    text-shadow: 2px 2px getColor("secondary");
-    /* text-shadow: 2px 2px #222; */
   }
 }
 </style>
