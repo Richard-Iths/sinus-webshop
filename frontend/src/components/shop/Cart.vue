@@ -11,9 +11,9 @@
           <span class="text-color">{{ getTotal }}</span> kr
         </h4>
       </div>
-      <h6>Moms includerat i priset</h6>
+      <h6>taxes included in the price</h6>
     </div>
-    <Button value="Checkout" @click="checkout"/>
+    <Button :value="buttonText" @click="checkout"/>
   </div>
 </template>
 <script>
@@ -21,6 +21,9 @@ import CartItem from "./CartItem";
 import Button from "@/components/Button.vue";
 export default {
   components: { CartItem, Button },
+  data() { return {
+    buttonText: 'Checkout'
+  }},
   computed: {
     getCart() {
       return this.$store.getters["order/getCart"];
@@ -33,8 +36,12 @@ export default {
   },
   methods: {
     checkout() {
-      this.$emit('close')
-      this.$router.push({ name: "Checkout" });
+      if(this.getCart.length > 0) {
+        this.$emit('close')
+        this.$router.push({ name: "Checkout" });
+      }else{
+        this.buttonText = 'the cart is empty'
+      }
     },
   },
 };

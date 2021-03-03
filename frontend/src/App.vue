@@ -60,6 +60,7 @@ label {
 }
 
 p,
+h6,
 input,
 select {
   font-family: "Cantarell", sans-serif;
