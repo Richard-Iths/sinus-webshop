@@ -13,11 +13,7 @@
       </div>
       <h6>taxes included in the price</h6>
     </div>
-    <<<<<<< HEAD
-    <Button value="Checkout" @click="checkout" />
-    =======
     <Button :value="buttonText" @click="checkout" />
-    >>>>>>> 502982329d38534b2828f1eaefca3ff1b871b7c4
   </div>
 </template>
 <script>
