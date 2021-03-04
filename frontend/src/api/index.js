@@ -5,7 +5,6 @@ const BASE_URL = process.env.VUE_APP_API_URL;
 export const authUser = async (userObj) => {
   try {
     const { data } = await axios.post(`${BASE_URL}/auth/`, userObj);
-    console.log(data, "Data");
     return data;
   } catch ({ response }) {
     throw new Error(response.data.error);
@@ -17,7 +16,6 @@ export const registerUser = async (userObj) => {
     const { data } = await axios.post(`${BASE_URL}/register/`, userObj);
     return data;
   } catch ({ response }) {
-    console.log(response.data.errors, "errors");
     throw new Error(response.data.errors);
   }
 };
