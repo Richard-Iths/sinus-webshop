@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.VUE_APP_API_URL;
+const BASE_URL = 'http://localhost:5000/api';
 
 export const authUser = async (userObj) => {
   try {
