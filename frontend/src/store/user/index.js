@@ -31,9 +31,11 @@ const user = {
     [Mutations.UPDATE_USER]: (state, user) => {
       state.user = user;
     },
-    [Mutations.UPDATE_ORDER_HISTORY]: (state, order) => {
-      state.userOrderHistory.push(order);
-      state.userOrderHistoryById[order._id] = order;
+    [Mutations.UPDATE_ORDER_HISTORY]: (state, orders) => {
+      state.userOrderHistory = orders
+      orders.forEach((order) => {
+        state.userOrderHistoryById[order._id] = order;
+      });
     },
   },
   actions: {
@@ -67,8 +69,10 @@ const user = {
         return error.message;
       }
     },
-    updateOrderHistory: async ({ commit }, order) => {
-      commit(Mutations.UPDATE_ORDER_HISTORY, order);
+    updateOrderHistory: async ({ state, commit }) => {
+      const orderHistory = await API.getUserOrders(state.token  );
+
+      commit(Mutations.UPDATE_ORDER_HISTORY, orderHistory);
     },
     getUser: async ({ commit }, token) => {
       try {
