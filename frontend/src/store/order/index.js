@@ -75,7 +75,7 @@ const order = {
 
       const order = await API.makeOrder(orderObj, token);
       if (token) {
-        dispatch("user/updateOrderHistory", state.cart, { root: true });
+        dispatch("user/updateOrderHistory", { root: true });
       }
       commit(Mutations.REMOVE_ORDER);
       return order
