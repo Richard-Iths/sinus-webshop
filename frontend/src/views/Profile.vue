@@ -69,6 +69,10 @@
 
       <Button class="col-2" value="save" @click="save" v-if="editing" />
     </Form>
+    <div v-if="orders.length !== 0">
+      <h1>Orders</h1>
+      <Orders v-for="order in orders" :key="order.id" :order="order" />
+    </div>
   </div>
 </template>
 
@@ -76,12 +80,15 @@
 import Button from "@/components/Button.vue";
 import Form from "@/components/Form.vue";
 import Modal from "@/components/Modal.vue";
+import Orders from "@/components/order/Orders.vue";
+
 export default {
   name: "Profile",
   components: {
     Button,
     Form,
     Modal,
+    Orders,
   },
   data() {
     return {
@@ -92,6 +99,9 @@ export default {
   computed: {
     user() {
       return this.$store.getters["user/getUser"];
+    },
+    orders() {
+      return this.$store.getters["user/getUserOrderHistory"];
     },
   },
   methods: {
